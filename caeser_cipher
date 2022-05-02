@@ -1,0 +1,43 @@
+def encrypt(message, num):
+    upper_alpha = list("ABCDEFGHIJKLMNOPQRSTUVWXYZ")
+    lower_alpha = list("abcdefghijklmnopqrstuvwxyz")
+
+    cipher = ""
+    for x in message:
+        if x in upper_alpha:
+            cipher += upper_alpha[(upper_alpha.index(x) + num) % 26]
+        elif x in lower_alpha:
+            cipher += lower_alpha[(lower_alpha.index(x) + num) % 26]
+        else:
+            cipher += x
+    print(cipher)
+
+
+def decrypt(message, num):
+    upper_alpha = list("ABCDEFGHIJKLMNOPQRSTUVWXYZ")
+    lower_alpha = list("abcdefghijklmnopqrstuvwxyz")
+
+    cipher = ""
+    for x in message:
+        if x in upper_alpha:
+            cipher += upper_alpha[(upper_alpha.index(x) - num) % 26]
+        elif x in lower_alpha:
+            cipher += lower_alpha[(lower_alpha.index(x) - num) % 26]
+        else:
+            cipher += x
+    print(cipher)
+
+
+def program():
+    choice = input('Enter e for encrypt message, d for decrypt: ')
+    if choice.lower() == 'e':
+        mess = input('Enter your message: ')
+        num = int(input('Enter number to crypt your message: '))
+        encrypt(mess, num)
+    else:
+        mess = input('Enter your message: ')
+        num = int(input('Enter number to crypt your message: '))
+        decrypt(mess, num)
+
+
+program()
